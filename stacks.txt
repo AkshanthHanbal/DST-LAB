@@ -1,0 +1,71 @@
+#include<stdio.h>
+#define Size 10
+
+int stack[Size];
+int top=-1;
+
+void push()
+{
+    int x;
+    printf("enter the data to be stored: ");
+    scanf("%d",&x);
+
+    if(top==Size-1)
+    {
+        printf("stack overflow");
+    }
+    else{
+        top++;
+        stack[top]=x;
+    }
+}
+
+void pop()
+{
+    if(top==-1)
+    {
+        printf("stack underflow");
+    }
+    else{
+        
+        printf("the popped value is %d",stack[top]);
+        top--;
+    }
+}
+
+void display()
+{
+if(top==-1)
+{
+    printf("stack is empty");
+}
+else{
+    int i;
+    for(i=top;i>=0;i--)
+    {
+        printf("%d",stack[i]);
+    }
+}
+}
+
+void main()
+{
+    int ch;
+    do{
+        printf("enter the choice  1:push  2:pop  3:display");
+        scanf("%d",&ch);
+
+        switch(ch)
+        {
+            case 1: push();
+            break;
+            case 2: pop();
+            break;
+            case 3: display();
+            break;
+            default: printf("Invalid Choice");
+        }
+    }
+    while(ch!=0);
+
+}
