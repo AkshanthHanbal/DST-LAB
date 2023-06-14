@@ -1,75 +1,84 @@
 #include <stdio.h>
-#define MAX 50
-int queue_array[MAX];
-int rear = -1;
-int front = -1;
 
-display()
+void main()
 {
-    int i;
-    if(front== -1)
-        printf("queue is empty \n");
-        else
+     int i,j,k,arr1[10][10],rsum[10],csum[10],rpro[10],cpro[10],n;
+
+       printf("\n\nFind the sum of rows an columns of a Matrix:\n");
+       printf("enter the size of the square matrix : ");
+     scanf("%d", &n);
+printf("enter the elements in the  first matrix :\n");
+       for(i=0;i<n;i++)
         {
-            printf("queue is: \n");
-        for(i=front;i<=rear;i++)
-        printf("%d",queue_array[i]);
-    printf("\n");
+            for(j=0;j<n;j++)
+            {
+          printf("element - [%d],[%d] : ",i,j);
+          scanf("%d",&arr1[i][j]);
+            }
         }
-
-}//end of display
-
-insert()
+      printf("The matrix is :\n");
+for(i=0;i<n;i++)
 {
-    int add_item;
-    if(rear==MAX-1)
-        printf("queue is overflow \n");
-    else
-    {
-        if(front== -1)
-            front=0;
-        printf("insert the element in queue:");
-        scanf("%d",&add_item);
-        rear=rear+1;
-        queue_array[rear]=-add_item;
-    }
-}//end of insert
-
-delete()
-{
-    if(front==-1|| front>rear)
-    {
-        printf("queue underflow \n");
-        return;
-    }
-    else
-    {
-        printf("deleted element is : %d \n",queue_array[front]);
-        front=front+1;
-    }
-}//end of delete
-
-main()
-{
-    int choice;
-    while(1)
-    {
-        printf("1.insert \n");
-        printf("2.delete \n");
-        printf("3.display \n");
-        printf("4.exit \n");
-        printf("enter your choice: ");
-        scanf("%d",&choice);
-        switch(choice)
-        {
-            case 1:insert();
-            break;
-            case 2:delete();
-            break;
-            case 3:display();
-            break;
-            case 4:exit(1);
-            default: printf("invalid choice \n");
-        }
-    }
+  for(j=0;j<n ;j++)
+    printf("% d",arr1[i][j]);
+   printf("\n");
 }
+     for(i=0;i<n;i++)
+     {
+ rsum[i]=0;
+ for(j=0;j<n;j++)
+ rsum[i]=rsum[i]+arr1[i][j];
+     }
+       for(i=0;i<n;i++)
+      {
+ csum[i]=0;
+ for(j=0;j<n;j++)
+csum[i]=csum[i]+arr1[j][i];
+      }
+       printf("The sum or rows and columns of the matrix is :\n");
+      for(i=0;i<n;i++)
+      {
+  for(j=0;j<n;j++)
+     printf("% 4d",arr1[i][j]);
+  printf("% 8d",rsum[i]);
+  printf("\n");
+       }
+       printf("\n");
+   for(j=0;j<n;j++)
+             {
+       printf("% 4d",csum[j]);
+             }
+            printf("\n\n");
+            
+            //row and column multiplication
+       
+                  for(i=0;i<n;i++)
+     {
+ rpro[i]=1;
+ for(j=0;j<n;j++)
+ rpro[i]=rpro[i]*arr1[i][j];
+     }
+                for(i=0;i<n;i++)
+     {
+ cpro[i]=1;
+ for(j=0;j<n;j++)
+ cpro[i]=cpro[i]*arr1[j][i];
+     }
+           
+       printf("The product of rows and columns of the matrix is :\n");
+      for(i=0;i<n;i++)
+      {
+  for(j=0;j<n;j++)
+     printf("% 4d",arr1[i][j]);
+  printf("% 8d",rpro[i]);
+  printf("\n");
+       }
+       printf("\n");
+   for(j=0;j<n;j++)
+             {
+       printf("% 4d",cpro[j]);
+             }
+            printf("\n\n");
+                 
+           
+  }
